@@ -69,3 +69,11 @@ slate.bind("left:shift;ctrl;alt",function(win) {
 slate.bind("f:alt;ctrl",function(win) {
     win.doOperation(fullScreen);
 });
+
+/* 
+  tried to map this to up-arrow, seems to be confounded with 
+  something from mission control or something.
+*/
+slate.bind("c:alt;ctrl",function(win) {
+    win.doOperation(pushCenterThird);
+});
