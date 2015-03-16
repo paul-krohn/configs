@@ -42,11 +42,11 @@ var pushRight = slate.operation("push", {
   "style" : "bar-resize:screenSizeX/2"
 });
 
-slate.bind("right:ctrl", function(win) {
+slate.bind("right:ctrl;alt", function(win) {
     win.doOperation(pushRight);
 });
 
-slate.bind("left:ctrl", function(win) {
+slate.bind("left:ctrl;alt", function(win) {
     win.doOperation(pushLeft);
 });
 
@@ -74,6 +74,6 @@ slate.bind("f:alt;ctrl",function(win) {
   tried to map this to up-arrow, seems to be confounded with 
   something from mission control or something.
 */
-slate.bind("c:alt;ctrl",function(win) {
+slate.bind("c:shift;ctrl",function(win) {
     win.doOperation(pushCenterThird);
 });
