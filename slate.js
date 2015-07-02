@@ -5,6 +5,20 @@ var fullScreen = slate.operation("move", {
   "height" : "screenSizeY"
 });
 
+var pushTopLeftThird = slate.operation("move", {
+    "x" : "screenOriginX",
+    "y" : "screenOriginY",
+    "width" : "screenSizeX/3",
+    "height" : "screenSizeY/2"
+});
+
+var pushTopRightThird = slate.operation("move", {
+    "x" : "screenOriginX+2*screenSizeX/3",
+    "y" : "screenOriginY",
+    "width" : "screenSizeX/3",
+    "height" : "screenSizeY/2"
+});
+
 var pushLeftThird = slate.operation("push", {
   "direction" : "left",
   "style" : "bar-resize:screenSizeX/3"
@@ -46,6 +60,14 @@ slate.bind("right:ctrl;alt", function(win) {
     win.doOperation(pushRight);
 });
 
+slate.bind("up:ctrl;shift", function(win) {
+    win.doOperation(pushTopLeftThird);
+});
+
+slate.bind("up:alt;shift", function(win) {
+    win.doOperation(pushTopRightThird);
+});
+
 slate.bind("left:ctrl;alt", function(win) {
     win.doOperation(pushLeft);
 });
@@ -70,8 +92,8 @@ slate.bind("f:alt;ctrl",function(win) {
     win.doOperation(fullScreen);
 });
 
-/* 
-  tried to map this to up-arrow, seems to be confounded with 
+/*
+  tried to map this to up-arrow, seems to be confounded with
   something from mission control or something.
 */
 slate.bind("c:shift;ctrl",function(win) {
