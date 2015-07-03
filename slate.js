@@ -19,6 +19,20 @@ var pushTopRightThird = slate.operation("move", {
     "height" : "screenSizeY/2"
 });
 
+var pushBottomLeftThird = slate.operation("move", {
+    "x" : "screenOriginX",
+    "y" : "screenSizeY/2",
+    "width" : "screenSizeX/3",
+    "height" : "screenSizeY/2"
+});
+
+var pushBottomRightThird = slate.operation("move", {
+    "x" : "screenOriginX+2*screenSizeX/3",
+    "y" : "screenSizeY/2",
+    "width" : "screenSizeX/3",
+    "height" : "screenSizeY/2"
+});
+
 var pushLeftThird = slate.operation("push", {
   "direction" : "left",
   "style" : "bar-resize:screenSizeX/3"
@@ -66,6 +80,14 @@ slate.bind("up:ctrl;shift", function(win) {
 
 slate.bind("up:alt;shift", function(win) {
     win.doOperation(pushTopRightThird);
+});
+
+slate.bind("down:ctrl;shift", function(win) {
+    win.doOperation(pushBottomLeftThird);
+});
+
+slate.bind("down:alt;shift", function(win) {
+    win.doOperation(pushBottomRightThird);
 });
 
 slate.bind("left:ctrl;alt", function(win) {
