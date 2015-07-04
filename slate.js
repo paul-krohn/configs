@@ -19,6 +19,11 @@ var pushTopRightThird = slate.operation("move", {
     "height" : "screenSizeY/2"
 });
 
+/*
+There is a bit of a bug witht the 2 pushBottom*Third fuctions:
+they bothe make the bottom windo overlap slightly with an above window.
+Looks like about title bar height?
+*/
 var pushBottomLeftThird = slate.operation("move", {
     "x" : "screenOriginX",
     "y" : "screenSizeY/2",
