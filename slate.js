@@ -20,20 +20,21 @@ var pushTopRightThird = slate.operation("move", {
 });
 
 /*
-There is a bit of a bug witht the 2 pushBottom*Third fuctions:
-they bothe make the bottom windo overlap slightly with an above window.
-Looks like about title bar height?
+  screenOriginY represents, under usual/single display circumstances,
+  the height of the main title bar and needs to be added to the y offest
+  for non-top placements, ie anything that is intended to be flush to the
+  bottom of the screen.
 */
 var pushBottomLeftThird = slate.operation("move", {
     "x" : "screenOriginX",
-    "y" : "screenSizeY/2",
+    "y" : "screenOriginY+screenSizeY/2",
     "width" : "screenSizeX/3",
     "height" : "screenSizeY/2"
 });
 
 var pushBottomRightThird = slate.operation("move", {
     "x" : "screenOriginX+2*screenSizeX/3",
-    "y" : "screenSizeY/2",
+    "y" : "screenOriginY+screenSizeY/2",
     "width" : "screenSizeX/3",
     "height" : "screenSizeY/2"
 });
