@@ -8,14 +8,14 @@ var fullScreen = slate.operation("move", {
 var pushTopLeftThird = slate.operation("move", {
     "x" : "screenOriginX",
     "y" : "screenOriginY",
-    "width" : "screenSizeX/3",
+    "width" : "2*screenSizeX/5",
     "height" : "screenSizeY/2"
 });
 
 var pushTopRightThird = slate.operation("move", {
-    "x" : "screenOriginX+2*screenSizeX/3",
+    "x" : "screenOriginX+3*screenSizeX/5",
     "y" : "screenOriginY",
-    "width" : "screenSizeX/3",
+    "width" : "2*screenSizeX/5",
     "height" : "screenSizeY/2"
 });
 
@@ -28,41 +28,41 @@ var pushTopRightThird = slate.operation("move", {
 var pushBottomLeftThird = slate.operation("move", {
     "x" : "screenOriginX",
     "y" : "screenOriginY+screenSizeY/2",
-    "width" : "screenSizeX/3",
+    "width" : "2*screenSizeX/5",
     "height" : "screenSizeY/2"
 });
 
 var pushBottomRightThird = slate.operation("move", {
-    "x" : "screenOriginX+2*screenSizeX/3",
+    "x" : "screenOriginX+3*screenSizeX/5",
     "y" : "screenOriginY+screenSizeY/2",
-    "width" : "screenSizeX/3",
+    "width" : "2*screenSizeX/5",
     "height" : "screenSizeY/2"
 });
 
 var pushLeftThird = slate.operation("push", {
   "direction" : "left",
-  "style" : "bar-resize:screenSizeX/3"
+  "style" : "bar-resize:2*screenSizeX/5"
 });
 
 var pushRightThird = slate.operation("push", {
   "direction" : "right",
-  "style" : "bar-resize:screenSizeX/3"
+  "style" : "bar-resize:2*screenSizeX/5"
 });
 
 var pushRight2Thirds = slate.operation("push", {
   "direction" : "right",
-  "style" : "bar-resize:2*screenSizeX/3"
+  "style" : "bar-resize:3*screenSizeX/5"
 });
 
 var pushLeft2Thirds = slate.operation("push", {
   "direction" : "left",
-  "style" : "bar-resize:2*screenSizeX/3"
+  "style" : "bar-resize:3*screenSizeX/5"
 });
 
 var pushCenterThird = slate.operation("move", {
-  "x": "screenOriginX+screenSizeX/3",
+  "x": "screenOriginX+3*screenSizeX/5",
   "y": "screenOriginY",
-  "width": "screenSizeX/3",
+  "width": "2*screenSizeX/5",
   "height" : "screenSizeY"
 });
 
