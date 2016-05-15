@@ -1,0 +1,8 @@
+echo "this file is: $BASH_SOURCE"
+echo "this file is really $(readlink $BASH_SOURCE)"
+DIR=$(dirname $(readlink $BASH_SOURCE))
+
+echo $DIR
+for FILE in $DIR/*.bash ; do {
+  . $FILE
+} ; done
