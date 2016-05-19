@@ -79,7 +79,7 @@ hs.hotkey.bind({"alt", "ctrl"}, ";", function()
 end)
 
 -- lower right small
-hs.hotkey.bind({"alt", "ctrl"}, "l", function()
+hs.hotkey.bind({"alt", "ctrl"}, "/", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
