@@ -57,6 +57,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "P", function()
   local screen = win:screen()
   local max = screen:frame()
 
+  f.x = max.w - (max.w * small)
   f.y = max.y
   f.w = max.w * small
   f.h = max.h
