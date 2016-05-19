@@ -1,19 +1,14 @@
---[[
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "H", function()
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-
-  f.x = f.x - 10
-  win:setFrame(f)
-end)
---]]
 -- reload config
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
   hs.reload()
 end)
 hs.alert.show("Config loaded")
 
--- left third
+-- define sizes of the 'large' vs 'small' left/right sections
+small = 0.4
+large = 0.6
+
+-- left small
 hs.hotkey.bind({"alt", "ctrl"}, "U", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
@@ -22,12 +17,12 @@ hs.hotkey.bind({"alt", "ctrl"}, "U", function()
 
   f.x = max.x
   f.y = max.y
-  f.w = max.w / 3
+  f.w = max.w * small
   f.h = max.h
   win:setFrame(f)
 end)
 
--- left two thirds
+-- left large
 hs.hotkey.bind({"alt", "ctrl"}, "I", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
@@ -36,69 +31,68 @@ hs.hotkey.bind({"alt", "ctrl"}, "I", function()
 
   f.x = max.x
   f.y = max.y
-  f.w = 2 * max.w / 3
+  f.w = max.w * large
   f.h = max.h
   win:setFrame(f)
 end)
 
--- right two thirds
+-- right large
 hs.hotkey.bind({"alt", "ctrl"}, "O", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x + (max.w / 3)
+  f.x = max.x + (max.w * small)
   f.y = max.y
-  f.w = 2 * max.w / 3
+  f.w = max.w * large
   f.h = max.h
   win:setFrame(f)
 end)
 
--- right third
+-- right small
 hs.hotkey.bind({"alt", "ctrl"}, "P", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x + 2 * (max.w / 3)
   f.y = max.y
-  f.w = max.w / 3
+  f.w = max.w * small
   f.h = max.h
   win:setFrame(f)
 end)
 
--- upper right third
+-- upper right small
 hs.hotkey.bind({"alt", "ctrl"}, ";", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x + 2 * (max.w / 3)
-  f.y = max.y / 2
-  f.w = max.w / 3
+  f.x = max.x + large * max.w
+  f.y = max.y
+  f.w = max.w * small
   f.h = max.h / 2
   win:setFrame(f)
 end)
 
--- lower right third
+-- lower right small
 hs.hotkey.bind({"alt", "ctrl"}, "l", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x + 2 * (max.w / 3)
-  f.y = max.y
-  f.w = max.w / 3
+  f.x = max.x + large * max.w
+  f.y = max.y + max.h / 2
+  f.w = max.w * small
   f.h = max.h / 2
   win:setFrame(f)
 end)
 
 -- full screen
-hs.hotkey.bind({"alt", "ctrl"}, "f", function()
+hs.hotkey.bind({"alt", "ctrl"}, "m", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
