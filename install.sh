@@ -9,9 +9,9 @@ for CF in hammerspoon tmux.conf;  do {
   ln -sf ${SOURCE}/${CF} .${CF} ;
 }; done
 
-PROFILE_FILE="~/.bash_profile"
+SOURCE_PROFILE=${SOURCE}/profile.d/profile
 if [[ $(uname) =~ "Darwin" ]] ; then
-  echo "on darwin, use .profile"
-  PROFILE_FILE="~/.profile"
+  ln -sf ${SOURCE_PROFILE} ~/.profile
+else
+  ln -sf ${SOURCE_PROFILE} ~/.bash_profile
 fi
-ln -sf ${SOURCE}/profile.d/profile ${PROFILE_FILE}
