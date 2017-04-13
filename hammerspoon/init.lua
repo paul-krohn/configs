@@ -5,8 +5,8 @@ end)
 hs.alert.show("Config loaded")
 
 -- define sizes of the 'large' vs 'small' left/right sections
-small = 0.4
-large = 0.6
+small = 0.3
+large = 0.7
 
 -- left small
 hs.hotkey.bind({"alt", "ctrl"}, "U", function()
