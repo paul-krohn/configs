@@ -5,7 +5,7 @@ set -ex
 SOURCE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd ${HOME}
-for CF in hammerspoon tmux.conf;  do {
+for CF in hammerspoon tmux.conf vimrc;  do {
   ln -sf ${SOURCE}/${CF} .${CF} ;
 }; done
 
