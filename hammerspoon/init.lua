@@ -191,7 +191,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "x", function()
 
   f.x = max.w / 2
   f.y = max.h / 2 - screenFrameHeightDiff(win)
-œf.w = max.w / 2
+  f.w = max.w / 2
   f.h = max.h / 2
   win:setFrame(f)
 end)
