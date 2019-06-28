@@ -4,9 +4,15 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
 end)
 hs.alert.show("Config loaded")
 
+function screenFrameHeightDiff(win)
+  local screen = win:screen()
+  local fr = screen:frame()
+  local ff = screen:fullFrame()
+  return ff.y - fr.y
+end
 -- define sizes of the 'large' vs 'small' left/right sections
-small = 0.3
-large = 0.7
+small = 0.35
+large = 0.65
 
 -- left small
 hs.hotkey.bind({"alt", "ctrl"}, "U", function()
@@ -107,7 +113,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "m", function()
 end)
 
 -- half left
-hs.hotkey.bind({"alt", "ctrl"}, "j", function()
+hs.hotkey.bind({"alt", "ctrl"}, "q", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -121,7 +127,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "j", function()
 end)
 
 -- half right
-hs.hotkey.bind({"alt", "ctrl"}, "k", function()
+hs.hotkey.bind({"alt", "ctrl"}, "w", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -131,5 +137,61 @@ hs.hotkey.bind({"alt", "ctrl"}, "k", function()
   f.y = max.y
   f.w = max.w / 2
   f.h = max.h
+  win:setFrame(f)
+end)
+
+-- half top left
+hs.hotkey.bind({"alt", "ctrl"}, "a", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w / 2
+  f.h = max.h / 2
+  win:setFrame(f)
+end)
+
+-- top right half/half
+hs.hotkey.bind({"alt", "ctrl"}, "s", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.w /2
+  f.y = 0
+  f.w = max.w / 2
+  f.h = max.h / 2
+  win:setFrame(f)
+end)
+
+-- bottom left half.half
+hs.hotkey.bind({"alt", "ctrl"}, "z", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.h / 2 - screenFrameHeightDiff(win)
+  f.w = max.w / 2
+  f.h = max.h / 2
+  win:setFrame(f)
+end)
+
+-- bottom right half.half
+hs.hotkey.bind({"alt", "ctrl"}, "x", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.w / 2
+  f.y = max.h / 2 - screenFrameHeightDiff(win)
+œf.w = max.w / 2
+  f.h = max.h / 2
   win:setFrame(f)
 end)
