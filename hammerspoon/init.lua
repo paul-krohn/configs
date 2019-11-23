@@ -12,10 +12,10 @@ function screenFrameHeightDiff(win)
 end
 
 -- define sizes of the 'large' vs 'small' left/right sections
-left_third = 0.40
+left_third = 0.45
 middle_third = 0.38
 right_third = 0.26
-
+padding_size = 20
 
 -- full screen
 hs.hotkey.bind({"alt", "ctrl"}, "s", function()
@@ -66,10 +66,11 @@ hs.hotkey.bind({"alt", "ctrl"}, "a", function()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w * left_third
-  f.h = max.h
+  f.x = max.x + padding_size
+  -- f.y = max.y
+  f.y = 2 * padding_size
+  f.w = max.w * left_third - padding_size
+  f.h = max.h - 2 * padding_size
   win:setFrame(f)
 end)
 
@@ -81,10 +82,10 @@ hs.hotkey.bind({"alt", "ctrl"}, "w", function()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x + max.w * left_third
-  f.y = 0
-  f.w = max.w * (1 - left_third)
-  f.h = max.h / 2
+  f.x = max.x + max.w * left_third + padding_size
+  f.y = 2 * padding_size
+  f.w = max.w * (1 - left_third) - 2 * padding_size
+  f.h = max.h / 2 - padding_size
   win:setFrame(f)
 end)
 
@@ -95,10 +96,10 @@ hs.hotkey.bind({"alt", "ctrl"}, "x", function()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x + max.w * left_third
-  f.y = max.h / 2 - screenFrameHeightDiff(win)
-  f.w = max.w * (1 - left_third)
-  f.h = max.h / 2
+  f.x = max.x + max.w * left_third + padding_size
+  f.y = max.h / 2 - screenFrameHeightDiff(win) + padding_size
+  f.w = max.w * (1 - left_third) - 2 * padding_size
+  f.h = max.h / 2 - (2 * padding_size)
   win:setFrame(f)
 end)
 
@@ -109,9 +110,9 @@ hs.hotkey.bind({"alt", "ctrl"}, "d", function()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x + max.w * left_third
-  f.y = 0
-  f.w = max.w * (1 - left_third)
-  f.h = max.h
+  f.x = max.x + max.w * left_third + padding_size
+  f.y = 2 * padding_size
+  f.w = max.w * (1 - left_third) - 2 * padding_size
+  f.h = max.h - 2 * padding_size
   win:setFrame(f)
 end)
