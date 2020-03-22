@@ -65,25 +65,17 @@ maxFrame = {
   w = primaryScreen:frame().w,
 }
 
+-- on a 24x24 grid, these are {x, y, w, h}
 lowerRight = {
-  x = maxFrame.w / 2,
-  y = 2 * maxFrame.h / 3 + primaryScreenMenuBarOffset,
-  w = maxFrame.w / 2,
-  h = maxFrame.h / 3,
+  14.0, 10.0, 10.0, 14.0
 }
 
 upperRight = {
-  x = maxFrame.w / 2,
-  y = primaryScreenMenuBarOffset,
-  w = maxFrame.w / 2,
-  h = 2* maxFrame.h / 3,
+  14.0, 0.0, 10.0, 10.0
 }
 
 halfLeft = {
-  x = 0,
-  y = primaryScreenMenuBarOffset,
-  w = maxFrame.w / 2,
-  h = maxFrame.h,
+  0.0, 0.0, 14.0, 24.0
 }
 
 local appPositions = {
@@ -107,7 +99,7 @@ hs.hotkey.bind(globalHyper, "k", function()
     else
       for title, appWindow in pairs(thisApp:allWindows()) do
         print("the position for ", title, " is h/w/x/y", position.h, position.w, position.x, position.y)
-        appWindow:setFrame(position)
+        hs.grid.set(appWindow, position)
       end
     end
   end
