@@ -10,12 +10,18 @@ local primaryScreen = hs.screen.primaryScreen()
 local primaryScreenMenuBarOffset = primaryScreen:frame().y
 
 hs.loadSpoon("MiroWindowsManager")
--- the notation here is confusing -- the numerator and denominator are revered.
+-- Since there is no way to pass arguments to a spoon, we have to (re-) set
+-- hs.grid and MiroWindowsManager.GRID to 12x12. The default grid of 24x24 _works_
+-- but it looks like a remainder bug makes windows, particularly on small (laprop) screens,
+-- decrease in height every time they are re-sized; using a 12x12 grid avoids that bug.
+hs.grid.setGrid('12x12')
+spoon.MiroWindowsManager.GRID = {w = 12, h = 12}
+-- the notation here is confusing -- the numerator and denominator are reversed;
 -- also be sure the grid size is divisible by the grid size _for height and width_.
 spoon.MiroWindowsManager.sizes = {12/7, 2, 12/5}
 
-hs.grid.MARGINX = 12
-hs.grid.MARGINY = 12
+-- a margin of 8 seems to be small enough to avoid the aforementioned bug
+hs.grid.setMargins(hs.geometry.size({w=8, h=8}))
 -- setting animationDuration to not-zero makes iTerm/Terminal windows move all herky-jerky
 hs.window.animationDuration = 0.0
 
