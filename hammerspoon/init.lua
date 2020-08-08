@@ -21,7 +21,7 @@ hs.grid.setGrid('12x12')
 spoon.MiroWindowsManager.GRID = {w = 12, h = 12}
 -- the notation here is confusing -- the numerator and denominator are reversed;
 -- also be sure the grid size is divisible by the grid size _for height and width_.
-spoon.MiroWindowsManager.sizes = {12/7, 2, 12/5}
+spoon.MiroWindowsManager.sizes = {12/4, 2, 12/8}
 
 -- a margin of 8 seems to be small enough to avoid the aforementioned bug
 hs.grid.setMargins(hs.geometry.size({w=8, h=8}))
