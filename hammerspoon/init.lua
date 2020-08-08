@@ -10,6 +10,9 @@ local primaryScreen = hs.screen.primaryScreen()
 local primaryScreenMenuBarOffset = primaryScreen:frame().y
 
 hs.loadSpoon("MiroWindowsManager")
+-- spoon.MiroWindowsManager.log.setLogLevel('debug')
+-- spoon.MiroWindowsManager.log.d('hi')
+
 -- Since there is no way to pass arguments to a spoon, we have to (re-) set
 -- hs.grid and MiroWindowsManager.GRID to 12x12. The default grid of 24x24 _works_
 -- but it looks like a remainder bug makes windows, particularly on small (laprop) screens,
