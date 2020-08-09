@@ -127,3 +127,15 @@ hs.hotkey.bind(v60hyper, "pad=", function()
     spoon.MiroWindowsManager:_nextFullScreenStep()
   end
 end)
+
+myLog = hs.logger.new('pk_config', 'debug')
+hs.hotkey.bind(globalHyper, 'm', function()
+  local currentMic = hs.audiodevice.defaultInputDevice()
+
+  currentMic:setMuted(not currentMic:muted())
+
+  local verb = currentMic:muted() and " " or " un-"
+  local alertString =  currentMic:name() .. verb .. "muted"
+  hs.alert.show(alertString)
+
+end)
