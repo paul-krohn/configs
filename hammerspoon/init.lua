@@ -9,47 +9,39 @@ local globalHyper = {"ctrl", "alt"}
 local primaryScreen = hs.screen.primaryScreen()
 local primaryScreenMenuBarOffset = primaryScreen:frame().y
 
-hs.loadSpoon("MiroWindowsManager")
--- spoon.MiroWindowsManager.log.setLogLevel('debug')
--- spoon.MiroWindowsManager.log.d('hi')
 
--- Since there is no way to pass arguments to a spoon, we have to (re-) set
--- hs.grid and MiroWindowsManager.GRID to 12x12. The default grid of 24x24 _works_
--- but it looks like a remainder bug makes windows, particularly on small (laprop) screens,
--- decrease in height every time they are re-sized; using a 12x12 grid avoids that bug.
-hs.grid.setGrid('12x12')
-spoon.MiroWindowsManager.GRID = {w = 12, h = 12}
--- the notation here is confusing -- the numerator and denominator are reversed;
--- also be sure the grid size is divisible by the grid size _for height and width_.
-spoon.MiroWindowsManager.sizes = {12/4, 2, 12/8}
+local screenDimensionFigurer = {}
+screenDimensionFigurer.__index = screenDimensionFigurer
 
--- a margin of 8 seems to be small enough to avoid the aforementioned bug
-hs.grid.setMargins(hs.geometry.size({w=8, h=8}))
--- setting animationDuration to not-zero makes iTerm/Terminal windows move all herky-jerky
-hs.window.animationDuration = 0.0
+function screenDimensionFigurer.new(win)
+  local self = setmetatable({}, screenDimensionFigurer)
 
--- bindings for my custom-programmed keyboard
-spoon.MiroWindowsManager:bindHotkeys({
-  -- these keys are all mapped under layer 2
-  -- f14 is w/up-arrow
-  up = {v60hyper, "f14"},
-  --pad+ is s/down-arrow
-  down = {v60hyper, "pad+"},
-  -- pad- is a/left-arrow
-  left = {v60hyper, "pad-"},
-  -- padenter is d/right-arrow
-  right = {v60hyper, "padenter"},
-  -- pad1 is f
-  fullscreen = {v60hyper,"pad1"}
-})
--- bindings for an Apple keyboard, like the built-in one on a laptop
-spoon.MiroWindowsManager:bindHotkeys({
-  up = {globalHyper, "up"},
-  down = {globalHyper, "down"},
-  left = {globalHyper, "left"},
-  right = {globalHyper, "right"},
-  fullscreen = {globalHyper, "f"}
-})
+  self.margin = 10
+
+  self.win = win
+  self.frame = win:frame()
+  local screen = win:screen()
+  self.max = screen:frame()
+
+  self.frame.x = self.margin
+  -- self.frame.y = self.margin + screenFrameHeightDiff(win)
+  self.frame.y = self.margin + primaryScreenMenuBarOffset
+  self.frame.w = self.max.w - (2 * self.margin)
+  self.frame.h = self.max.h - (2 * self.margin) - primaryScreenMenuBarOffset
+
+  return self
+
+end
+
+
+hs.hotkey.bind({"alt", "ctrl"}, "x", function()
+  local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
+
+  sdf.frame.h = sdf.max.h / 2
+
+  sdf.win:setFrame(sdf.frame)
+ end)
+
 
 function stackWindows(win)
   -- find all windows in the app of the frontmost window
