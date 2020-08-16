@@ -61,6 +61,23 @@ hs.hotkey.bind({"alt", "ctrl"}, "x", function()
   sdf.win:setFrame(sdf.frame)
  end)
 
+hs.hotkey.bind({"alt", "ctrl"}, "c", function()
+  local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
+
+  sdf.frame.x = sdf.max.w * 0.55
+  print("set frame.x to ", sdf.max)
+  sdf.frame.h = sdf:getSizeWithOffsets('h', 55)
+  sdf.frame.w = sdf:getSizeWithOffsets('w', 45)
+
+  sdf.win:setFrame(sdf.frame)
+ end)
+
+hs.hotkey.bind({"alt", "ctrl"}, "f", function()
+  local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
+  -- no resizing/use default full-screen size
+  sdf.win:setFrame(sdf.frame)
+ end)
+
 
 function stackWindows(win)
   -- find all windows in the app of the frontmost window
