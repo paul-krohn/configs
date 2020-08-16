@@ -52,25 +52,45 @@ function screenDimensionFigurer.getSizeWithOffsets(self, hw, percent)
 
 end
 
-hs.hotkey.bind({"alt", "ctrl"}, "x", function()
+hs.hotkey.bind({"alt", "ctrl"}, "a", function()
   local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
 
   sdf.frame.h = sdf:getSizeWithOffsets('h', 55)
   sdf.frame.w = sdf:getSizeWithOffsets('w', 55)
 
   sdf.win:setFrame(sdf.frame)
- end)
+end)
 
-hs.hotkey.bind({"alt", "ctrl"}, "c", function()
+hs.hotkey.bind({"alt", "ctrl"}, "z", function()
+  local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
+
+  sdf.frame.y = sdf.max.h * 0.55
+  sdf.frame.h = sdf:getSizeWithOffsets('h', 45)
+  sdf.frame.w = sdf:getSizeWithOffsets('w', 55)
+
+  sdf.win:setFrame(sdf.frame)
+end)
+
+hs.hotkey.bind({"alt", "ctrl"}, "s", function()
   local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
 
   sdf.frame.x = sdf.max.w * 0.55
-  print("set frame.x to ", sdf.max)
   sdf.frame.h = sdf:getSizeWithOffsets('h', 55)
   sdf.frame.w = sdf:getSizeWithOffsets('w', 45)
 
   sdf.win:setFrame(sdf.frame)
- end)
+end)
+
+hs.hotkey.bind({"alt", "ctrl"}, "x", function()
+  local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
+
+  sdf.frame.x = sdf.max.w * 0.55
+  sdf.frame.y = sdf.max.h * 0.55
+  sdf.frame.h = sdf:getSizeWithOffsets('h', 45)
+  sdf.frame.w = sdf:getSizeWithOffsets('w', 45)
+
+  sdf.win:setFrame(sdf.frame)
+end)
 
 hs.hotkey.bind({"alt", "ctrl"}, "f", function()
   local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
