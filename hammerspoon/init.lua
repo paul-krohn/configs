@@ -33,11 +33,30 @@ function screenDimensionFigurer.new(win)
 
 end
 
+function screenDimensionFigurer.getSizeWithOffsets(self, hw, percent)
+
+  local baseSize = self.frame.w
+  if hw == 'h' then
+    baseSize = self.frame.h
+  end
+  print("the frame: " , self.frame)
+
+  marginShave = 1.5 * self.margin
+  if percent == 100 then
+    marginShave = 2 * self.margin
+  end
+
+  local newSize = baseSize * percent / 100 - marginShave
+  print("new size: ", newSize)
+  return newSize
+
+end
 
 hs.hotkey.bind({"alt", "ctrl"}, "x", function()
   local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
 
-  sdf.frame.h = sdf.max.h / 2
+  sdf.frame.h = sdf:getSizeWithOffsets('h', 55)
+  sdf.frame.w = sdf:getSizeWithOffsets('w', 55)
 
   sdf.win:setFrame(sdf.frame)
  end)
