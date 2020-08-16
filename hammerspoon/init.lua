@@ -22,12 +22,12 @@ function screenDimensionFigurer.new(win)
   self.frame = win:frame()
   local screen = win:screen()
   self.max = screen:frame()
+  self.menuBarOffset = win:screen():frame().y
 
   self.frame.x = self.margin
-  -- self.frame.y = self.margin + screenFrameHeightDiff(win)
-  self.frame.y = self.margin + primaryScreenMenuBarOffset
+  self.frame.y = self.margin + self.menuBarOffset
   self.frame.w = self.max.w - (2 * self.margin)
-  self.frame.h = self.max.h - (2 * self.margin) - primaryScreenMenuBarOffset
+  self.frame.h = self.max.h - (2 * self.margin) - self.menuBarOffset
 
   return self
 
