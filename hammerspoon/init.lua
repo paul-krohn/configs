@@ -27,7 +27,7 @@ function screenDimensionFigurer.new(win)
   self.frame.x = self.margin
   self.frame.y = self.margin + self.menuBarOffset
   self.frame.w = self.max.w - (2 * self.margin)
-  self.frame.h = self.max.h - (2 * self.margin) - self.menuBarOffset
+  self.frame.h = self.max.h - (2 * self.margin)
 
   return self
 
@@ -41,9 +41,9 @@ function screenDimensionFigurer.getSizeWithOffsets(self, hw, percent)
   end
   print("the frame: " , self.frame)
 
-  marginShave = 1.5 * self.margin
+  marginShave = 1 * self.margin -- still doesn't do rh margins right
   if percent == 100 then
-    marginShave = 2 * self.margin
+    marginShave = 0
   end
 
   local newSize = baseSize * percent / 100 - marginShave
