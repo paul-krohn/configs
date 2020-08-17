@@ -16,6 +16,8 @@ screenDimensionFigurer.__index = screenDimensionFigurer
 function screenDimensionFigurer.new(win)
   local self = setmetatable({}, screenDimensionFigurer)
 
+  self.size = {x = 0, y = 0, h = 100, w = 100}
+
   self.margin = 10
 
   self.win = win
@@ -24,16 +26,38 @@ function screenDimensionFigurer.new(win)
   self.max = screen:frame()
   self.menuBarOffset = win:screen():frame().y
 
-  self.frame.x = self.margin
-  self.frame.y = self.margin + self.menuBarOffset
-  self.frame.w = self.max.w - (2 * self.margin)
-  self.frame.h = self.max.h - (2 * self.margin)
-
   return self
 
 end
 
-function screenDimensionFigurer.getSizeWithOffsets(self, hw, percent)
+function screenDimensionFigurer.move(self)
+
+  local offsets = {left = self.margin, right = self.margin, top = self.margin, bottom = self.margin}
+  if self.size.x ~= 0 then
+    offsets.left = 0.5 * self.margin
+  end
+
+  if self.size.x + self.size.w <= 99 then
+    offsets.right = 0.5 * self.margin
+  end
+
+  if self.size.y ~= 0 then
+    offsets.top = 0.5 * self.margin
+  end
+
+  if self.size.y + self.size.h <= 99 then
+    offsets.bottom = 0.5 * self.margin
+  end
+
+  self.frame.x = (self.max.w * self.size.x / 100) + offsets.left
+  self.frame.w = (self.max.w * self.size.w / 100) - offsets.left - offsets.right
+  self.frame.y = (self.max.h * self.size.y / 100) + offsets.top + self.menuBarOffset
+  self.frame.h = (self.max.h * self.size.h / 100) - offsets.top - offsets.bottom
+
+  self.win:setFrame(self.frame)
+end
+
+function screenDimensionFigurer.getSizeWithOffsets(self, hw)
 
   local baseSize = self.frame.w
   if hw == 'h' then
@@ -55,48 +79,48 @@ end
 hs.hotkey.bind({"alt", "ctrl"}, "a", function()
   local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
 
-  sdf.frame.h = sdf:getSizeWithOffsets('h', 55)
-  sdf.frame.w = sdf:getSizeWithOffsets('w', 55)
+  sdf.size.h = 55
+  sdf.size.w = 55
 
-  sdf.win:setFrame(sdf.frame)
+  sdf:move()
 end)
 
 hs.hotkey.bind({"alt", "ctrl"}, "z", function()
   local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
 
-  sdf.frame.y = sdf.max.h * 0.55
-  sdf.frame.h = sdf:getSizeWithOffsets('h', 45)
-  sdf.frame.w = sdf:getSizeWithOffsets('w', 55)
+  sdf.size.y = 55
+  sdf.size.h = 45
+  sdf.size.w = 55
 
-  sdf.win:setFrame(sdf.frame)
+  sdf:move()
 end)
 
 hs.hotkey.bind({"alt", "ctrl"}, "s", function()
   local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
 
-  sdf.frame.x = sdf.max.w * 0.55
-  sdf.frame.h = sdf:getSizeWithOffsets('h', 55)
-  sdf.frame.w = sdf:getSizeWithOffsets('w', 45)
+  sdf.size.x = 55
+  sdf.size.h = 55
+  sdf.size.w = 45
 
-  sdf.win:setFrame(sdf.frame)
+  sdf:move()
 end)
 
 hs.hotkey.bind({"alt", "ctrl"}, "x", function()
   local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
 
-  sdf.frame.x = sdf.max.w * 0.55
-  sdf.frame.y = sdf.max.h * 0.55
-  sdf.frame.h = sdf:getSizeWithOffsets('h', 45)
-  sdf.frame.w = sdf:getSizeWithOffsets('w', 45)
+  sdf.size.x = 55
+  sdf.size.y = 55
+  sdf.size.h = 45
+  sdf.size.w = 45
 
-  sdf.win:setFrame(sdf.frame)
+  sdf:move()
 end)
 
 hs.hotkey.bind({"alt", "ctrl"}, "f", function()
   local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
   -- no resizing/use default full-screen size
-  sdf.win:setFrame(sdf.frame)
- end)
+  sdf:move()
+end)
 
 
 function stackWindows(win)
