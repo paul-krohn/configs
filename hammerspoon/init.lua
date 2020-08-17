@@ -109,8 +109,8 @@ hs.hotkey.bind({"alt", "ctrl"}, "x", function()
   local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
 
   sdf.size.x = 55
-  sdf.size.y = 55
-  sdf.size.h = 45
+  sdf.size.y = 65
+  sdf.size.h = 35
   sdf.size.w = 45
 
   sdf:move()
