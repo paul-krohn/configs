@@ -77,7 +77,28 @@ function screenDimensionFigurer:guessSize()
     self.size.h = (self.frame.h + self.margin) / self.max.h * 100
   end
 
-  print(string.format("we guessed: x: %s w: %s y: %s h: %s", self.size.x, self.size.w, self.size.y, self.size.h))
+  print(string.format("we guessed/calculated: x: %s w: %s y: %s h: %s", self.size.x, self.size.w, self.size.y, self.size.h))
+end
+
+function screenDimensionFigurer:changeSize(hw, delta)
+  -- self:guessSize()
+  xy = 'x'
+  if  hw == 'h' then
+    xy = 'y'
+  end
+  requestedSideLength = self.size[hw] + delta
+  overage = self.size[xy] + self.size[hw] + delta - 100
+  if overage < 0 then
+    overage = 0
+  end
+  self.size[xy] = self.size[xy] - overage
+  self.size[hw] = self.size[hw] + delta + overage
+  if self.size[hw] >= 100 then
+    self.size[xy] = 0
+    self.size[hw] = 100
+  end
+  print(string.format("%s: %s requested %s percent: %s, overage: %s", xy, self.size[xy], hw, requestedSideLength, overage))
+
 end
 
 function screenDimensionFigurer.move(self)
@@ -98,6 +119,8 @@ function screenDimensionFigurer.move(self)
   if self.size.y + self.size.h <= 99 then
     offsets.bottom = 0.5 * self.margin
   end
+
+print(string.format("moving to size: (%%) x: %s y: %s w: %s h: %s", self.size.x, self.size.y, self.size.w, self.size.h))
 
   self.frame.x = (self.max.w * self.size.x / 100) + offsets.left
   self.frame.w = (self.max.w * self.size.w / 100) - offsets.left - offsets.right
@@ -175,6 +198,28 @@ end)
 hs.hotkey.bind({"alt", "ctrl"}, "up", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow(), true)
   -- no resizing/use default full-screen size
+  sdf:changeSize('h', 10)
+  sdf:move()
+end)
+
+hs.hotkey.bind({"alt", "ctrl"}, "down", function()
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow(), true)
+  -- no resizing/use default full-screen size
+sdf:changeSize('h', -10)
+  sdf:move()
+end)
+
+hs.hotkey.bind({"alt", "ctrl"}, "left", function()
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow(), true)
+  -- no resizing/use default full-screen size
+  sdf:changeSize('w', -10)
+  sdf:move()
+end)
+
+hs.hotkey.bind({"alt", "ctrl"}, "right", function()
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow(), true)
+  -- no resizing/use default full-screen size
+  sdf:changeSize('w', 10)
   sdf:move()
 end)
 
