@@ -10,10 +10,10 @@ local primaryScreen = hs.screen.primaryScreen()
 local primaryScreenMenuBarOffset = primaryScreen:frame().y
 
 
-local screenDimensionFigurer = {}
+screenDimensionFigurer = {}
 screenDimensionFigurer.__index = screenDimensionFigurer
 
-function screenDimensionFigurer.new(win)
+function screenDimensionFigurer:new(win, useCurrentSize)
   local self = setmetatable({}, screenDimensionFigurer)
 
   self.size = {x = 0, y = 0, h = 100, w = 100}
@@ -77,7 +77,7 @@ function screenDimensionFigurer.getSizeWithOffsets(self, hw)
 end
 
 hs.hotkey.bind({"alt", "ctrl"}, "a", function()
-  local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
   sdf.size.h = 55
   sdf.size.w = 55
@@ -86,7 +86,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "a", function()
 end)
 
 hs.hotkey.bind({"alt", "ctrl"}, "z", function()
-  local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
   sdf.size.y = 55
   sdf.size.h = 45
@@ -96,7 +96,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "z", function()
 end)
 
 hs.hotkey.bind({"alt", "ctrl"}, "s", function()
-  local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
   sdf.size.x = 55
   sdf.size.h = 65
@@ -106,7 +106,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "s", function()
 end)
 
 hs.hotkey.bind({"alt", "ctrl"}, "x", function()
-  local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
   sdf.size.x = 55
   sdf.size.y = 65
@@ -117,7 +117,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "x", function()
 end)
 
 hs.hotkey.bind({"alt", "ctrl"}, "f", function()
-  local sdf = screenDimensionFigurer.new(hs.window.focusedWindow())
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
   -- no resizing/use default full-screen size
   sdf:move()
 end)
