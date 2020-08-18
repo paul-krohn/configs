@@ -50,14 +50,19 @@ function screenDimensionFigurer:guessSize()
   print(string.format("abutments: l: %s r: %s, t: %s, b: %s", abuts.l, abuts.r, abuts.t, abuts.b))
 
   if abuts.l and abuts.r then
-    print("abuts l not r")
-    -- doing nothing leaves the default whole-screen width
+    print("abuts l and r")
+    self.size.x = 0
+    self.size.w = 100
   elseif abuts.l and not abuts.r then
+    self.size.x = 0
+    self.size.w = (self.frame.w + self.margin * 1.5) / self.max.w * 100
+  elseif not abuts.l and abuts.r then
     self.size.x = (self.frame.x - self.margin * 0.5) / self.max.w * 100
     self.size.w = (self.frame.w + self.margin) / self.max.w * 100
-  else
+  else  -- abuts neither is the remaining case
+    print("abuts neither")
     self.size.x = (self.frame.x - self.margin * 0.5) / self.max.w * 100
-    self.size.w = (self.frame.w + self.margin * 0.5) / self.max.w * 100
+    self.size.w = (self.frame.w + self.margin) / self.max.w * 100
   end
 
   print(string.format("we guessed: x: %s w: %s y: %s h: %s", self.size.x, self.size.w, self.size.y, self.size.h))
