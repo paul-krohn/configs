@@ -149,7 +149,9 @@ function screenDimensionFigurer.getSizeWithOffsets(self, hw)
 
 end
 
-hs.hotkey.bind({"alt", "ctrl"}, "a", function()
+-- for keymap reference: https://github.com/paul-krohn/qmk-keyboard-layout/blob/master/drop-alt-custom/keymap.c
+
+hs.hotkey.bind({}, "f13", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
   sdf.size.h = 55
@@ -158,17 +160,30 @@ hs.hotkey.bind({"alt", "ctrl"}, "a", function()
   sdf:move()
 end)
 
-hs.hotkey.bind({"alt", "ctrl"}, "z", function()
+hs.hotkey.bind({}, "f14", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
-  sdf.size.y = 55
-  sdf.size.h = 45
-  sdf.size.w = 55
-
+  sdf.size.h = 55
   sdf:move()
 end)
 
-hs.hotkey.bind({"alt", "ctrl"}, "s", function()
+hs.hotkey.bind({}, "f15", function()
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
+
+  sdf.size.x = 55
+  sdf.size.h = 65
+  sdf.size.w = 45
+  sdf:move()
+end)
+
+hs.hotkey.bind({}, "pad-", function()
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
+
+  sdf.size.w = 55
+  sdf:move()
+end)
+
+hs.hotkey.bind({}, "pad+", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
   sdf.size.x = 55
@@ -178,7 +193,33 @@ hs.hotkey.bind({"alt", "ctrl"}, "s", function()
   sdf:move()
 end)
 
-hs.hotkey.bind({"alt", "ctrl"}, "x", function()
+hs.hotkey.bind({}, "padenter", function()
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
+  sdf.size.x = 55
+  sdf.size.w = 45
+  sdf:move()
+end)
+
+hs.hotkey.bind({}, "pad7", function()
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
+
+  sdf.size.y = 55
+  sdf.size.h = 45
+  sdf.size.w = 55
+
+  sdf:move()
+end)
+
+hs.hotkey.bind({}, "pad8", function()
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
+
+  sdf.size.y = 55
+  sdf.size.h = 55
+
+  sdf:move()
+end)
+
+hs.hotkey.bind({}, "pad9", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
   sdf.size.x = 55
@@ -189,7 +230,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "x", function()
   sdf:move()
 end)
 
-hs.hotkey.bind({"alt", "ctrl"}, "f", function()
+hs.hotkey.bind({}, "pad+", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
   -- no resizing/use default full-screen size
   sdf:move()
