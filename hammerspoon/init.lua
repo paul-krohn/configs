@@ -38,7 +38,7 @@ end
 
 function screenDimensionFigurer:guessSize()
 
-  print(string.format("the frame we are guessing from: x: %s w: %s y: %s h: %s", self.frame.x, self.frame.w, self.frame.y, self.frame.h))
+  -- print(string.format("the frame we are guessing from: x: %s w: %s y: %s h: %s", self.frame.x, self.frame.w, self.frame.y, self.frame.h))
 
   local abuts = {
     l = self.frame.x <= self.margin,
@@ -47,10 +47,9 @@ function screenDimensionFigurer:guessSize()
     b = self.frame.y + self.frame.h >= self.max.h - self.margin
   }
 
-  print(string.format("abutments: l: %s r: %s, t: %s, b: %s", abuts.l, abuts.r, abuts.t, abuts.b))
+  -- print(string.format("abutments: l: %s r: %s, t: %s, b: %s", abuts.l, abuts.r, abuts.t, abuts.b))
 
   if abuts.l and abuts.r then
-    print("abuts l and r")
     self.size.x = 0
     self.size.w = 100
   elseif abuts.l and not abuts.r then
@@ -60,9 +59,22 @@ function screenDimensionFigurer:guessSize()
     self.size.x = (self.frame.x - self.margin * 0.5) / self.max.w * 100
     self.size.w = (self.frame.w + self.margin) / self.max.w * 100
   else  -- abuts neither is the remaining case
-    print("abuts neither")
     self.size.x = (self.frame.x - self.margin * 0.5) / self.max.w * 100
     self.size.w = (self.frame.w + self.margin) / self.max.w * 100
+  end
+
+  if abuts.t and abuts.b then
+    self.size.y = 0
+    self.size.h = 100
+  elseif abuts.t and not abuts.b then
+    self.size.y = 0
+    self.size.h = (self.frame.h + self.margin * 1.5) / self.max.h * 100
+  elseif not abuts.t and abuts.b then
+    self.size.y = (self.frame.y - self.menuBarOffset - self.margin * 0.5) / self.max.h * 100
+    self.size.h = (self.frame.h + self.margin) / self.max.h * 100
+  else
+    self.size.y = (self.frame.y - self.menuBarOffset - self.margin * 0.5) / self.max.h * 100
+    self.size.h = (self.frame.h + self.margin) / self.max.h * 100
   end
 
   print(string.format("we guessed: x: %s w: %s y: %s h: %s", self.size.x, self.size.w, self.size.y, self.size.h))
