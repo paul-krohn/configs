@@ -26,8 +26,41 @@ function screenDimensionFigurer:new(win, useCurrentSize)
   self.max = screen:frame()
   self.menuBarOffset = win:screen():frame().y
 
+  useCurrentSize = useCurrentSize or false
+  print(string.format("use current size: %s", useCurrentSize))
+  if useCurrentSize then
+   self:guessSize()
+  end
+
   return self
 
+end
+
+function screenDimensionFigurer:guessSize()
+
+  print(string.format("the frame we are guessing from: x: %s w: %s y: %s h: %s", self.frame.x, self.frame.w, self.frame.y, self.frame.h))
+
+  local abuts = {
+    l = self.frame.x <= self.margin,
+    r = self.frame.x + self.frame.w >= self.max.w - self.margin,
+    t = self.frame.y <= self.menuBarOffset + self.margin,
+    b = self.frame.y + self.frame.h >= self.max.h - self.margin
+  }
+
+  print(string.format("abutments: l: %s r: %s, t: %s, b: %s", abuts.l, abuts.r, abuts.t, abuts.b))
+
+  if abuts.l and abuts.r then
+    print("abuts l not r")
+    -- doing nothing leaves the default whole-screen width
+  elseif abuts.l and not abuts.r then
+    self.size.x = (self.frame.x - self.margin * 0.5) / self.max.w * 100
+    self.size.w = (self.frame.w + self.margin) / self.max.w * 100
+  else
+    self.size.x = (self.frame.x - self.margin * 0.5) / self.max.w * 100
+    self.size.w = (self.frame.w + self.margin * 0.5) / self.max.w * 100
+  end
+
+  print(string.format("we guessed: x: %s w: %s y: %s h: %s", self.size.x, self.size.w, self.size.y, self.size.h))
 end
 
 function screenDimensionFigurer.move(self)
@@ -118,6 +151,12 @@ end)
 
 hs.hotkey.bind({"alt", "ctrl"}, "f", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
+  -- no resizing/use default full-screen size
+  sdf:move()
+end)
+
+hs.hotkey.bind({"alt", "ctrl"}, "up", function()
+  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow(), true)
   -- no resizing/use default full-screen size
   sdf:move()
 end)
