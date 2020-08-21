@@ -12,9 +12,43 @@ hs.window.animationDuration = 0
 
 hs.loadSpoon("PaulWindowManager")
 
-screenDimensionFigurer = {}
-screenDimensionFigurer.__index = screenDimensionFigurer
+spoon.PaulWindowManager:bindSize({}, "f13", {
+  h = 65,
+  w = 55
+})
+spoon.PaulWindowManager:bindSize({}, "f14", {
+  h = 65
+})
+spoon.PaulWindowManager:bindSize({}, "f15", {
+  h = 40,
+  w = 50,
+  x = 55
+})
 
+spoon.PaulWindowManager:bindSize({}, "pad-", {
+  w = 55
+})
+spoon.PaulWindowManager:bindSize({}, "pad+", {
+  -- no args -> whole screen
+})
+spoon.PaulWindowManager:bindSize({}, "padenter", {
+  x = 55
+})
+
+spoon.PaulWindowManager:bindSize({}, "pad7", {
+  w = 55,
+  y = 65,
+  h = 35,
+})
+spoon.PaulWindowManager:bindSize({}, "pad8", {
+  y = 65,
+  h = 35,
+})
+spoon.PaulWindowManager:bindSize({}, "pad9", {
+  x = 55,
+  y = 50,
+  h = 50,
+})
 
 hs.hotkey.bind({"alt", "ctrl"}, "up", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow(), true)
