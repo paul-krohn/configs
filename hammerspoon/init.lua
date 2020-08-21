@@ -8,6 +8,7 @@ local v60hyper = {}
 local globalHyper = {"ctrl", "alt"}
 local primaryScreen = hs.screen.primaryScreen()
 local primaryScreenMenuBarOffset = primaryScreen:frame().y
+hs.window.animationDuration = 0
 
 
 screenDimensionFigurer = {}
