@@ -20,7 +20,7 @@ spoon.PaulWindowManager:bindSize({}, "f14", {
   h = 65
 })
 spoon.PaulWindowManager:bindSize({}, "f15", {
-  h = 40,
+  h = 50,
   w = 50,
   x = 55
 })
