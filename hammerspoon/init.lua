@@ -154,7 +154,7 @@ end
 hs.hotkey.bind({}, "f13", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
-  sdf.size.h = 55
+  sdf.size.h = 65
   sdf.size.w = 55
 
   sdf:move()
@@ -171,7 +171,7 @@ hs.hotkey.bind({}, "f15", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
   sdf.size.x = 55
-  sdf.size.h = 65
+  sdf.size.h = 50
   sdf.size.w = 45
   sdf:move()
 end)
@@ -203,8 +203,8 @@ end)
 hs.hotkey.bind({}, "pad7", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
-  sdf.size.y = 55
-  sdf.size.h = 45
+  sdf.size.y = 65
+  sdf.size.h = 35
   sdf.size.w = 55
 
   sdf:move()
@@ -223,8 +223,8 @@ hs.hotkey.bind({}, "pad9", function()
   local sdf = screenDimensionFigurer:new(hs.window.focusedWindow())
 
   sdf.size.x = 55
-  sdf.size.y = 65
-  sdf.size.h = 35
+  sdf.size.y = 50
+  sdf.size.h = 50
   sdf.size.w = 45
 
   sdf:move()
