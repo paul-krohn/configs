@@ -12,42 +12,27 @@ hs.window.animationDuration = 0
 
 hs.loadSpoon("PaulWindowManager")
 
-spoon.PaulWindowManager:bindSize({}, "f13", {
-  h = 65,
-  w = 55
-})
-spoon.PaulWindowManager:bindSize({}, "f14", {
-  h = 65
-})
-spoon.PaulWindowManager:bindSize({}, "f15", {
-  h = 50,
-  w = 50,
-  x = 55
-})
+spoon.PaulWindowManager:bindSizes({mappings=
+  {mash = {},              key = "f13",  size = {h = 65, w = 55}},
+  {mash = {"ctrl", "alt"}, key = "q",    size = {h = 65, w = 55}},
+  {mash = {},              key = "f14",  size = {h = 65}},
+  {mash = {"ctrl", "alt"}, key = "w",    size = {h = 65}},
+  {mash = {},              key = "f15",  size = {h = 50, w = 50, x = 55}},
+  {mash = {"ctrl", "alt"}, key = "e",    size = {h = 50, w = 50, x = 55}},
 
-spoon.PaulWindowManager:bindSize({}, "pad-", {
-  w = 55
-})
-spoon.PaulWindowManager:bindSize({}, "pad+", {
-  -- no args -> whole screen
-})
-spoon.PaulWindowManager:bindSize({}, "padenter", {
-  x = 55
-})
+  {mash = {},              key = "pad-", size = {        w = 55}},
+  {mash = {"ctrl", "alt"}, key = "a",    size = {        w = 55}},
+  {mash = {},              key = "pad+", size = {}},
+  {mash = {"ctrl", "alt"}, key = "s",    size = {}},
+  {mash = {},              key = "padenter", size = {            x = 55}},
+  {mash = {"ctrl", "alt"}, key = "d",    size = {                x = 55}},
 
-spoon.PaulWindowManager:bindSize({}, "pad7", {
-  w = 55,
-  y = 65,
-  h = 35,
-})
-spoon.PaulWindowManager:bindSize({}, "pad8", {
-  y = 65,
-  h = 35,
-})
-spoon.PaulWindowManager:bindSize({}, "pad9", {
-  x = 55,
-  y = 50,
-  h = 50,
+  {mash = {},              key = "pad7", size = {h = 35, w = 55,         y = 65}},
+  {mash = {"ctrl", "alt"}, key = "z",    size = {h = 35, w = 55,         y = 65}},
+  {mash = {},              key = "pad8", size = {h = 35,                 y = 65}},
+  {mash = {"ctrl", "alt"}, key = "x",    size = {h = 35,                 y = 65}},
+  {mash = {},              key = "pad9", size = {h = 50,         x = 55, y = 50}},
+  {mash = {"ctrl", "alt"}, key = "c",    size = {h = 50,         x = 55, y = 50}},
 })
 
 hs.hotkey.bind({"alt", "ctrl"}, "up", function()
