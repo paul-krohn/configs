@@ -35,34 +35,12 @@ spoon.PaulWindowManager:bindSizes({mappings=
   {mash = {"ctrl", "alt"}, key = "c",    size = {h = 50,         x = 55, y = 50}},
 })
 
-hs.hotkey.bind({"alt", "ctrl"}, "up", function()
-  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow(), true)
-  -- no resizing/use default full-screen size
-  sdf:changeSize('h', 10)
-  sdf:move()
-end)
-
-hs.hotkey.bind({"alt", "ctrl"}, "down", function()
-  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow(), true)
-  -- no resizing/use default full-screen size
-sdf:changeSize('h', -10)
-  sdf:move()
-end)
-
-hs.hotkey.bind({"alt", "ctrl"}, "left", function()
-  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow(), true)
-  -- no resizing/use default full-screen size
-  sdf:changeSize('w', -10)
-  sdf:move()
-end)
-
-hs.hotkey.bind({"alt", "ctrl"}, "right", function()
-  local sdf = screenDimensionFigurer:new(hs.window.focusedWindow(), true)
-  -- no resizing/use default full-screen size
-  sdf:changeSize('w', 10)
-  sdf:move()
-end)
-
+spoon.PaulWindowManager:bindChangeSizes({mappings=
+  {mash = {"ctrl", "alt"}, key = "up", delta = 10, hw = 'h'},
+  {mash = {"ctrl", "alt"}, key = "down", delta = -10, hw = 'h'},
+  {mash = {"ctrl", "alt"}, key = "left", delta = -10, hw = 'w'},
+  {mash = {"ctrl", "alt"}, key = "right", delta = 10, hw = 'w'},
+})
 
 function stackWindows(win)
   -- find all windows in the app of the frontmost window
