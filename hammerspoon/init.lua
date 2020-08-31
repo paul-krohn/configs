@@ -12,7 +12,8 @@ hs.window.animationDuration = 0
 
 hs.loadSpoon("PaulWindowManager")
 
-spoon.PaulWindowManager:bindSizes({mappings=
+spoon.PaulWindowManager:bindKeys(
+{sizes =
   {mash = {},              key = "f13",  size = {h = 65, w = 55}},
   {mash = {"ctrl", "alt"}, key = "q",    size = {h = 65, w = 55}},
   {mash = {},              key = "f14",  size = {h = 65}},
@@ -33,30 +34,17 @@ spoon.PaulWindowManager:bindSizes({mappings=
   {mash = {"ctrl", "alt"}, key = "x",    size = {h = 35,                 y = 65}},
   {mash = {},              key = "pad9", size = {h = 50,         x = 55, y = 50}},
   {mash = {"ctrl", "alt"}, key = "c",    size = {h = 50,         x = 55, y = 50}},
-})
-
-spoon.PaulWindowManager:bindChangeSizes({mappings=
+},
+{deltas =
   {mash = {"ctrl", "alt"}, key = "up", delta = 10, hw = 'h'},
   {mash = {"ctrl", "alt"}, key = "down", delta = -10, hw = 'h'},
   {mash = {"ctrl", "alt"}, key = "left", delta = -10, hw = 'w'},
   {mash = {"ctrl", "alt"}, key = "right", delta = 10, hw = 'w'},
-})
-
-function stackWindows(win)
-  -- find all windows in the app of the frontmost window
-  -- make all the windows in the app the same size
-  local f = win:frame()
-  local app = win:application()
-  local windows = app:allWindows()
-  for i, window in ipairs(windows) do
-    window:setFrame(f)
-  end
-end
-
-hs.hotkey.bind(v60hyper, "f17", function()
-  local win = hs.window.focusedWindow()
-  stackWindows(win)
-end)
+},
+{stack =
+  {mash = {"ctrl", "alt"}, key = "t"},
+}
+)
 
 maxFrame = {
   x = 0,
