@@ -12,17 +12,34 @@ hs.window.animationDuration = 0
 
 hs.loadSpoon("PaulWindowManager")
 
+-- define a few aliases for both key bindings and app defaults
+halfLeft = {
+  w = 55
+}
+
+upperRight = {
+  h = 50,
+  w = 45,
+  x = 55,
+}
+
+lowerRight = {
+  h = 50,
+  x = 55,
+  y = 50,
+}
+
 spoon.PaulWindowManager:bindKeys(
 {sizes =
   {mash = {},              key = "f13",  size = {h = 65, w = 55}},
   {mash = {"ctrl", "alt"}, key = "q",    size = {h = 65, w = 55}},
   {mash = {},              key = "f14",  size = {h = 65}},
   {mash = {"ctrl", "alt"}, key = "w",    size = {h = 65}},
-  {mash = {},              key = "f15",  size = {h = 50, w = 45, x = 55}},
-  {mash = {"ctrl", "alt"}, key = "e",    size = {h = 50, w = 45, x = 55}},
+  {mash = {},              key = "f15",  size = upperRight},
+  {mash = {"ctrl", "alt"}, key = "e",    size = upperRight},
 
-  {mash = {},              key = "pad-", size = {        w = 55}},
-  {mash = {"ctrl", "alt"}, key = "a",    size = {        w = 55}},
+  {mash = {},              key = "pad-", size = halfLeft},
+  {mash = {"ctrl", "alt"}, key = "a",    size = halfLeft},
   {mash = {},              key = "pad+", size = {}},
   {mash = {"ctrl", "alt"}, key = "s",    size = {}},
   {mash = {},              key = "padenter", size = {    w = 45, x = 55}},
@@ -32,8 +49,8 @@ spoon.PaulWindowManager:bindKeys(
   {mash = {"ctrl", "alt"}, key = "z",    size = {h = 35, w = 55,         y = 65}},
   {mash = {},              key = "pad8", size = {h = 35,                 y = 65}},
   {mash = {"ctrl", "alt"}, key = "x",    size = {h = 35,                 y = 65}},
-  {mash = {},              key = "pad9", size = {h = 50,         x = 55, y = 50}},
-  {mash = {"ctrl", "alt"}, key = "c",    size = {h = 50,         x = 55, y = 50}},
+  {mash = {},              key = "pad9", size = lowerRight},
+  {mash = {"ctrl", "alt"}, key = "c",    size = lowerRight},
 },
 {deltas =
   {mash = {"ctrl", "alt"}, key = "up", delta = 10, hw = 'h'},
@@ -43,55 +60,19 @@ spoon.PaulWindowManager:bindKeys(
 },
 {stack =
   {mash = {"ctrl", "alt"}, key = "t"},
-}
-)
-
-maxFrame = {
-  x = 0,
-  y = primaryScreenMenuBarOffset,
-  h = primaryScreen:frame().h,
-  w = primaryScreen:frame().w,
-}
-
--- on a 24x24 grid, these are {x, y, w, h}
-lowerRight = {
-  14.0, 10.0, 10.0, 14.0
-}
-
-upperRight = {
-  14.0, 0.0, 10.0, 10.0
-}
-
-halfLeft = {
-  0.0, 0.0, 14.0, 24.0
-}
-
-local appPositions = {
-  Atom = halfLeft,
-  ['Google Chrome'] = halfLeft,
-  ['IntelliJ IDEA'] = halfLeft,
-  iTerm2 = upperRight,
-  -- Messages = lowerRight,
-  PyCharm = halfLeft,
-  Slack = lowerRight,
-}
-
-hs.hotkey.bind(globalHyper, "k", function()
-  -- print("setting up default window positions")
-  -- print(appPositions.PyCharm.x)
-  for appName, position in pairs(appPositions) do
-    -- print("for ", appName)
-    thisApp = hs.application.get(appName)
-    if thisApp == nil then
-      print("skipping nil app: ", appName)
-    else
-      for title, appWindow in pairs(thisApp:allWindows()) do
-        print("the position for ", title, " is h/w/x/y", position.h, position.w, position.x, position.y)
-        hs.grid.set(appWindow, position)
-      end
-    end
-  end
-end)
+},
+{appDefaults = {
+  positions = {
+    Atom = halfLeft,
+    ['Google Chrome'] = halfLeft,
+    ['IntelliJ IDEA'] = halfLeft,
+    iTerm2 = upperRight,
+    PyCharm = halfLeft,
+    Slack = lowerRight,
+  },
+  mash = {"ctrl", "alt"},
+  key = "p"},
+})
 
 -- the 'pad=' key is under 'n' on layer 2
 hs.hotkey.bind(v60hyper, "pad=", function()
