@@ -77,5 +77,8 @@ spoon.PaulWindowManager:bindKeys{
   next = {
     {mash = {"ctrl", "alt"}, key = "n"},
   },
+  mic = {
+    {mash = {"ctrl", "alt"}, key = "m"},
+    {mash = {}, key = "pad,"},
+  }
 }
--- the 'pad=' key is under 'n' on layer 2
