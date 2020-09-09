@@ -27,6 +27,7 @@ upperRight = {
 
 lowerRight = {
   h = 50,
+  w = 45,
   x = 55,
   y = 50,
 }
