@@ -62,6 +62,7 @@ spoon.PaulWindowManager:bindKeys{
     {mash = {"ctrl", "alt"}, key = "right", delta = 10, hw = 'w'},
   },
   stack = {
+    {mash = {}, key = "f17"},
     {mash = {"ctrl", "alt"}, key = "t"},
   },
   appDefaults = {
@@ -78,6 +79,7 @@ spoon.PaulWindowManager:bindKeys{
     key = "p",
   },
   next = {
+    {mash = {}, key = "pad=,"},
     {mash = {"ctrl", "alt"}, key = "n"},
   },
   mic = {
