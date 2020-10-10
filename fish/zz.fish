@@ -22,7 +22,6 @@ set -g theme_display_virtualenv no  # leaves the activate-provided prompt
 # now you need a function to activate virtualenvs
 function pyact
   set -l env_name $argv[1]
-  # cat $PYENV_ROOT/versions/$env_name/bin/activate.fish | source
   source $PYENV_ROOT/versions/$env_name/bin/activate.fish
 end
 
