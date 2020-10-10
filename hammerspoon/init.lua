@@ -79,7 +79,7 @@ spoon.PaulWindowManager:bindKeys{
     key = "p",
   },
   next = {
-    {mash = {}, key = "pad=,"},
+    {mash = {}, key = "pad="},
     {mash = {"ctrl", "alt"}, key = "n"},
   },
   mic = {
