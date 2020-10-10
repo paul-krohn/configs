@@ -15,6 +15,11 @@ function pyact
   source $PYENV_ROOT/versions/$env_name/bin/activate.fish
 end
 
+# auto-complete for above; picks up new virtualenvs when you start a new shell
+for ve_name in (find $PYENV_ROOT/versions -type l -depth 1)
+  complete -c pyact -f -a (basename $ve_name)
+end
+
 # from the pyenv instructions
 status --is-interactive; and pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
