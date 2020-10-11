@@ -12,7 +12,7 @@ set -g theme_display_virtualenv no  # leaves the activate-provided prompt
 # now you need a function to activate virtualenvs
 function pyact
   set -l env_name $argv[1]
-  source $PYENV_ROOT/versions/$env_name/bin/activate.fish
+  source (psub < $PYENV_ROOT/versions/$env_name/bin/activate.fish)
 end
 
 # auto-complete for above; picks up new virtualenvs when you start a new shell
