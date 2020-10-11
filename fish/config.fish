@@ -24,7 +24,6 @@ end
 status --is-interactive; and pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
 
-
 function fish_right_prompt; end  # diable the right (timestamp) prompt
 
 # use this as a workaround if you don't have a powerline font installed
