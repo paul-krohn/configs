@@ -16,9 +16,7 @@ function pyact
 end
 
 # auto-complete for above; picks up new virtualenvs when you start a new shell
-for ve_name in (find $PYENV_ROOT/versions -type l -depth 1)
-  complete -c pyact -f -a (basename $ve_name)
-end
+complete -c pyact -x -a "(find $PYENV_ROOT/versions -type l -depth 1 -exec basename {} \;)"
 
 # from the pyenv instructions
 status --is-interactive; and pyenv init - | source
