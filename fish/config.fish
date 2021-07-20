@@ -1,3 +1,6 @@
+# home bin on PATH pls
+set -x PATH $HOME/bin $PATH
+
 # the default is some kind of right-caret, no likey
 set -g theme_newline_prompt '$ '
 set -g theme_newline_cursor yes
@@ -38,3 +41,5 @@ set -g theme_display_ruby no
 set -g theme_display_nvm no
 set -g theme_display_vi no
 set -g theme_display_date no
+
+set -g theme_git_default_branches main
