@@ -13,6 +13,7 @@ hs.window.animationDuration = 0
 hs.loadSpoon("PaulWindowManager")
 
 spoon.PaulWindowManager.log.level = 'warning'
+spoon.PaulWindowManager.margin = 10
 
 -- define a few aliases for both key bindings and app defaults
 halfLeft = {
