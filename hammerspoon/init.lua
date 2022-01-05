@@ -78,5 +78,8 @@ spoon.PaulWindowManager:bindKeys{
   },
   mic = {
     {mash = macro_mash,     key = "m"},
+  },
+  audiosummary = {
+    {mash = macro_mash, key = "u"}
   }
 }
