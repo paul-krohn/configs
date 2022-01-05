@@ -23,16 +23,16 @@ halfLeft = {
 }
 
 upperRight = {
-  h = 50,
+  h = 58,
   w = 45,
   x = 55,
 }
 
 lowerRight = {
-  h = 50,
+  h = 42,
   w = 45,
   x = 55,
-  y = 50,
+  y = 58 ,
 }
 
 macro_mash = {"ctrl", "alt"}
