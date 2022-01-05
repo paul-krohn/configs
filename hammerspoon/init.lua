@@ -9,6 +9,8 @@ local globalHyper = {"ctrl", "alt"}
 local primaryScreen = hs.screen.primaryScreen()
 local primaryScreenMenuBarOffset = primaryScreen:frame().y
 hs.window.animationDuration = 0
+-- if only this worked; apparently a moving/breaking target on every os release
+hs.window.setShadows(false)
 
 hs.loadSpoon("PaulWindowManager")
 
