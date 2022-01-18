@@ -22,8 +22,8 @@ end
 complete -c pyact -x -a "(find $PYENV_ROOT/versions -type l -depth 1 -exec basename {} \;)"
 
 # from the pyenv instructions
-status --is-interactive; and pyenv init - | source
-status --is-interactive; and pyenv virtualenv-init - | source
+status --is-interactive; and . (pyenv init -|psub)
+status --is-interactive; and . (pyenv virtualenv-init -|psub)
 
 function fish_right_prompt; end  # diable the right (timestamp) prompt
 
