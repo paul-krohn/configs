@@ -39,17 +39,21 @@ macro_mash = {"ctrl", "alt"}
 
 spoon.PaulWindowManager:bindKeys{
   sizes = {
-    {mash = macro_mash, key = "q", size = {h = 65, w = 55}},
+    {mash = macro_mash, key = "q", size = {h = 65, w = 50}},
     {mash = macro_mash, key = "w", size = {h = 65}},
     {mash = macro_mash, key = "e", size = upperRight},
 
     {mash = macro_mash, key = "a", size = halfLeft},
     {mash = macro_mash, key = "s", size = {}},
-    {mash = macro_mash, key = "d", size = {        w = 45, x = 55}},
+    {mash = macro_mash, key = "d", size = {        w = 50, x = 50}},
 
-    {mash = macro_mash, key = "z", size = {h = 35, w = 55,         y = 65}},
+    {mash = macro_mash, key = "z", size = {h = 35, w = 50,         y = 65}},
     {mash = macro_mash, key = "x", size = {h = 35,                 y = 65}},
     {mash = macro_mash, key = "c", size = lowerRight},
+
+    {mash = macro_mash, key = "r", size = {h = 40, w = 50, x = 50,       }},
+    {mash = macro_mash, key = "f", size = {h = 40, w = 50, x = 50, y = 40}},
+    {mash = macro_mash, key = "v", size = {h = 20, w = 50, x = 50, y = 80}},
   },
   deltas = {
     {mash = macro_mash, key = "up", delta = 10, hw = 'h'},
