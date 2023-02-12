@@ -147,15 +147,15 @@ spoon.PaulWindowManager:bindKeys{
   sizes = {
     {mash = macro_mash, key = "q", size = centeredLeft},
     {mash = macro_mash, key = "w", size = centeredCenter},
-    {mash = macro_mash, key = "e", size = centeredRight},
+    {mash = macro_mash, key = "f", size = centeredRight},
 
     {mash = shift_mash, key = "q", size = halfoTopLeft},
     {mash = shift_mash, key = "w", size = wideTop},
-    {mash = shift_mash, key = "e", size = halfoTopRight},
+    {mash = shift_mash, key = "f", size = halfoTopRight},
 
     {mash = macro_mash, key = "a", size = tallLeft},
-    {mash = macro_mash, key = "s", size = centeredFullHeight},
-    {mash = macro_mash, key = "d", size = tallRight},
+    {mash = macro_mash, key = "r", size = centeredFullHeight},
+    {mash = macro_mash, key = "s", size = tallRight},
 
     {mash = macro_mash, key = "z", size = smallLeftBottom},
     {mash = shift_mash, key = "z", size = halfLeftBottom},
@@ -164,7 +164,7 @@ spoon.PaulWindowManager:bindKeys{
     {mash = shift_mash, key = "c", size = halfRightBottom},
 
     {mash = shift_mash, key = "w", size = wideTop},
-    {mash = shift_mash, key = "s", size = {}},
+    {mash = shift_mash, key = "r", size = {}},
     {mash = shift_mash, key = "x", size = wideBottom}
   },
   deltas = {
