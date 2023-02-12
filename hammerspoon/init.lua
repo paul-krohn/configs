@@ -4,8 +4,6 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
 end)
 hs.alert.show("Config loaded")
 
-local v60hyper = {}
-local globalHyper = {"ctrl", "alt"}
 local primaryScreen = hs.screen.primaryScreen()
 local primaryScreenMenuBarOffset = primaryScreen:frame().y
 hs.window.animationDuration = 0
@@ -32,24 +30,142 @@ lowerRight = {
   h = 42,
   w = 50,
   x = 50,
-  y = 58 ,
+  y = 58,
+}
+
+centeredCenter = {
+  h = 60,
+  w = 44,
+  x = 28,
+  y = 0,
+}
+
+centeredLeft = {
+  h = 60,
+  w = 28,
+  x = 0,
+  y = 0,
+}
+
+centeredRight = {
+  h = 60,
+  w = 28,
+  x = 72,
+  y = 0,
+}
+
+centeredBottomLeft = {
+  h = 40,
+  w = 50,
+  x = 0,
+  y = 60,
+}
+
+centeredBottomRight = {
+  h = 40,
+  w = 50,
+  x = 50,
+  y = 60,
+}
+
+centeredFullHeight = {
+  h = 100,
+  w = 44,
+  x = 28,
+  y = 0,
+}
+
+
+halfoTopLeft = {
+  h = 60,
+  w = 50,
+  x = 0,
+  y = 0,
+}
+
+halfoTopRight = {
+  h = 60,
+  w = 50,
+  x = 50,
+  y = 0,
+}
+
+tallLeft = {
+  w = 28,
+}
+
+centerBottom = {
+  x = 28,
+  y = 60,
+  h = 40,
+  w = 44,
+}
+
+tallRight = {
+  w = 28,
+  x = 72,
+}
+
+wideTop = {
+  h = 60
+}
+
+wideBottom = {
+  h = 40,
+  y = 60
+}
+
+smallLeftBottom = {
+  h = 40,
+  y = 60,
+  w = 28,
+}
+
+smallRightBottom = {
+  h = 40,
+  y = 60,
+  w = 28,
+  x = 72,
+}
+halfRightBottom = {
+  h = 40,
+  y = 60,
+  w = 50,
+  x = 50,
+}
+
+halfLeftBottom = {
+  h = 40,
+  y = 60,
+  w = 50,
+  x = 0,
 }
 
 macro_mash = {"ctrl", "alt"}
-
+shift_mash = {"shift", "ctrl", "alt"}
 spoon.PaulWindowManager:bindKeys{
   sizes = {
-    {mash = macro_mash, key = "q", size = {h = 65, w = 55}},
-    {mash = macro_mash, key = "w", size = {h = 65}},
-    {mash = macro_mash, key = "e", size = upperRight},
+    {mash = macro_mash, key = "q", size = centeredLeft},
+    {mash = macro_mash, key = "w", size = centeredCenter},
+    {mash = macro_mash, key = "f", size = centeredRight},
 
-    {mash = macro_mash, key = "a", size = halfLeft},
-    {mash = macro_mash, key = "s", size = {}},
-    {mash = macro_mash, key = "d", size = {        w = 45, x = 55}},
+    {mash = shift_mash, key = "q", size = halfoTopLeft},
+    {mash = shift_mash, key = "w", size = wideTop},
+    {mash = shift_mash, key = "f", size = halfoTopRight},
 
-    {mash = macro_mash, key = "z", size = {h = 35, w = 55,         y = 65}},
-    {mash = macro_mash, key = "x", size = {h = 35,                 y = 65}},
-    {mash = macro_mash, key = "c", size = lowerRight},
+    {mash = macro_mash, key = "a", size = tallLeft},
+    {mash = macro_mash, key = "r", size = centeredFullHeight},
+    {mash = macro_mash, key = "s", size = tallRight},
+
+    {mash = macro_mash, key = "z", size = smallLeftBottom},
+    {mash = shift_mash, key = "z", size = halfLeftBottom},
+    {mash = macro_mash, key = "x", size = centerBottom},
+    {mash = macro_mash, key = "c", size = smallRightBottom},
+    {mash = shift_mash, key = "c", size = halfRightBottom},
+
+    {mash = shift_mash, key = "w", size = wideTop},
+    {mash = shift_mash, key = "r", size = {}},
+    {mash = shift_mash, key = "x", size = wideBottom}
   },
   deltas = {
     {mash = macro_mash, key = "up", delta = 10, hw = 'h'},
