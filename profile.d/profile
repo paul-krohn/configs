@@ -1,8 +1,0 @@
-DIR=$(dirname $(readlink $BASH_SOURCE))
-
-for FILE in $DIR/*.bash ; do {
-  . $FILE
-} ; done
-
-export PATH=$PATH:${HOME}/bin
-export DJANGO_CHEF_ROOT=${HOME}/Source/chef-django
