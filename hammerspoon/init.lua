@@ -174,20 +174,7 @@ spoon.PaulWindowManager:bindKeys{
     {mash = macro_mash, key = "right", delta = 10, hw = 'w'},
   },
   stack = {
-    {mash = macro_mash, key = "t"},
-  },
-  appDefaults = {
-    positions = {
-      Atom = halfLeft,
-      ['Google Chrome'] = halfLeft,
-      ['IntelliJ IDEA'] = halfLeft,
-      iTerm2 = upperRight,
-      PyCharm = halfLeft,
-      Safari = halfLeft,
-      Slack = lowerRight,
-    },
-    mash = macro_mash,
-    key = "p",
+    {mash = macro_mash, key = "p"},
   },
   next = {
     {mash = macro_mash,     key = "n"},
