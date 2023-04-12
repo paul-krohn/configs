@@ -20,6 +20,11 @@ halfLeft = {
   w = 50
 }
 
+halfRight = {
+  w = 50,
+  x = 50
+}
+
 upperRight = {
   h = 58,
   w = 50,
@@ -154,8 +159,10 @@ spoon.PaulWindowManager:bindKeys{
     {mash = shift_mash, key = "f", size = halfoTopRight},
 
     {mash = macro_mash, key = "a", size = tallLeft},
+    {mash = shift_mash, key = "a", size = halfLeft},
     {mash = macro_mash, key = "r", size = centeredFullHeight},
     {mash = macro_mash, key = "s", size = tallRight},
+    {mash = shift_mash, key = "s", size = halfRight},
 
     {mash = macro_mash, key = "z", size = smallLeftBottom},
     {mash = shift_mash, key = "z", size = halfLeftBottom},
