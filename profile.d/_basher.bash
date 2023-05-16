@@ -15,6 +15,8 @@ export BASH_IT="/Users/pkrohn/.bash_it"
 # Leave empty to disable theming.
 # location /.bash_it/themes/
 export BASH_IT_THEME='powerline'
+export POWERLINE_PROMPT="aws_profile k8s_context scm cwd"
+export POWERLINE_PROMPT_CHAR='\n$'
 
 # Some themes can show whether `sudo` has a current token or not.
 # Set `$THEME_CHECK_SUDO` to `true` to check every prompt:
