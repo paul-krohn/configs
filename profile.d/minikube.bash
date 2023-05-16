@@ -8,5 +8,6 @@ fi
 
 alias k='kubectl '
 export KUBECONFIG=~/.kube/minikube
+# shellcheck disable=SC1090
 source <(kubectl completion bash)
 complete -F __start_kubectl k

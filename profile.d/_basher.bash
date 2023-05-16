@@ -6,6 +6,7 @@ case $- in
     *) return;;
 esac
 
+# shellcheck disable=SC1090
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Path to the bash it configuration
@@ -85,4 +86,5 @@ export SCM_CHECK=true
 # export BASH_IT_RELOAD_LEGACY=1
 
 # Load Bash It
+# shellcheck disable=SC1091
 source "$BASH_IT"/bash_it.sh
