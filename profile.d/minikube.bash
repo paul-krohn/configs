@@ -7,3 +7,6 @@ else
 fi
 
 alias k='kubectl '
+export KUBECONFIG=~/.kube/minikube
+source <(kubectl completion bash)
+complete -F __start_kubectl k
