@@ -6,9 +6,6 @@ case $- in
     *) return;;
 esac
 
-# shellcheck disable=SC1090
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 # Path to the bash it configuration
 export BASH_IT="/Users/pkrohn/.bash_it"
 
