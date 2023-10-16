@@ -4,4 +4,4 @@
 # * docker seems to not reclaim them when a container exits (but re-uses them when you run another?).
 # addressing this is
 
-ulimit -Sn 1048576  # :one-million-dollars:
+ulimit -Sn 1073741824  # :one-billion-dollars:
