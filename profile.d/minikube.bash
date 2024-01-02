@@ -1,9 +1,12 @@
 
-eval "$(minikube -p minikube docker-env 2>/dev/null)"
-if [ $? -eq 0 ] ; then
-  alias k='kubectl '
+if [ $(docker info > /dev/null 2>&1) ] ; then
+  echo "docker not running"
 else
-  echo "docker or minikube not running. Run \$(minikube -p minikube docker-env) to enable all the things." 1>&2
+  if eval "$(minikube -p minikube docker-env 2>/dev/null)"; then
+    true
+  else
+    echo "minikube not running. Run \$(minikube -p minikube docker-env) to enable all the things." 1>&2
+  fi
 fi
 
 alias k='kubectl '
