@@ -5,3 +5,7 @@
 # addressing this is
 
 ulimit -Sn 1073741824  # :one-billion-dollars:
+alias k='kubectl '
+# shellcheck disable=SC1090
+source <(kubectl completion bash)
+complete -F __start_kubectl k
