@@ -206,3 +206,15 @@ spoon.PaulWindowManager:bindKeys{
     {mash = macro_mash, key = "u"}
   }
 }
+
+
+hs.hotkey.bind({"alt", "ctrl"}, "d", function()
+
+  caps_on = hs.hid.capslock.get()
+  if caps_on then
+    hs.alert.show("CAPS ON")
+  else
+    hs.alert.show("lower case on")
+  end
+
+end)
