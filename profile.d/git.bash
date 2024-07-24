@@ -5,3 +5,4 @@ if [ -f /opt/homebrew/etc/bash_completion.d/git-completion.bash ]; then
 fi
 
 alias gpoh='git push origin HEAD'
+export GH_HOST="git.soma.salesforce.com"
