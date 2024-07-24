@@ -17,12 +17,17 @@ spoon.PaulWindowManager.margin = 10
 
 -- define a few aliases for both key bindings and app defaults
 halfLeft = {
-  w = 50
+  h = 80,
+  w = 40,
+  x = 10,
+  y = 0
 }
 
 halfRight = {
-  w = 50,
-  x = 50
+  h = 80,
+  w = 40,
+  x = 50,
+  y = 0
 }
 
 upperRight = {
@@ -96,7 +101,7 @@ halfoTopRight = {
 }
 
 tallLeft = {
-  w = 28,
+  w = 50,
 }
 
 centerBottom = {
@@ -107,8 +112,8 @@ centerBottom = {
 }
 
 tallRight = {
-  w = 28,
-  x = 72,
+  w = 50,
+  x = 50,
 }
 
 wideTop = {
@@ -146,6 +151,13 @@ halfLeftBottom = {
   x = 0,
 }
 
+biggen = {
+  h = 75,
+  w = 50,
+  x = 22,
+  y = 0
+}
+
 macro_mash = {"ctrl", "alt"}
 shift_mash = {"shift", "ctrl", "alt"}
 spoon.PaulWindowManager:bindKeys{
@@ -158,11 +170,11 @@ spoon.PaulWindowManager:bindKeys{
     {mash = shift_mash, key = "w", size = wideTop},
     {mash = shift_mash, key = "f", size = halfoTopRight},
 
-    {mash = macro_mash, key = "a", size = tallLeft},
-    {mash = shift_mash, key = "a", size = halfLeft},
+    {mash = macro_mash, key = "a", size = halfLeft},
+    {mash = shift_mash, key = "a", size = tallLeft},
     {mash = macro_mash, key = "r", size = centeredFullHeight},
-    {mash = macro_mash, key = "s", size = tallRight},
-    {mash = shift_mash, key = "s", size = halfRight},
+    {mash = macro_mash, key = "s", size = halfRight},
+    {mash = shift_mash, key = "s", size = tallRight},
 
     {mash = macro_mash, key = "z", size = smallLeftBottom},
     {mash = shift_mash, key = "z", size = halfLeftBottom},
@@ -172,7 +184,8 @@ spoon.PaulWindowManager:bindKeys{
 
     {mash = shift_mash, key = "w", size = wideTop},
     {mash = shift_mash, key = "r", size = {}},
-    {mash = shift_mash, key = "x", size = wideBottom}
+    {mash = shift_mash, key = "x", size = wideBottom},
+    {mash = macro_mash, key = "b", size = biggen}
   },
   deltas = {
     {mash = macro_mash, key = "up", delta = 10, hw = 'h'},
