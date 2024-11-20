@@ -117,7 +117,10 @@ tallRight = {
 }
 
 wideTop = {
-  h = 60
+  h = 80,
+  w = 80,
+  x = 10,
+  y = 0,
 }
 
 wideBottom = {
@@ -207,14 +210,10 @@ spoon.PaulWindowManager:bindKeys{
   }
 }
 
+hs.hotkey.bind(macro_mash, "-", function()
+    hs.itunes.volumeDown()
+end)
 
-hs.hotkey.bind({"alt", "ctrl"}, "d", function()
-
-  caps_on = hs.hid.capslock.get()
-  if caps_on then
-    hs.alert.show("CAPS ON")
-  else
-    hs.alert.show("lower case on")
-  end
-
+hs.hotkey.bind(macro_mash, "=", function()
+    hs.itunes.volumeUp()
 end)
