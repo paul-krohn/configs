@@ -14,6 +14,7 @@ hs.loadSpoon("PaulWindowManager")
 
 spoon.PaulWindowManager.log.level = 'warning'
 spoon.PaulWindowManager.margin = 10
+logger = hs.logger.new('main', 'debug')
 
 -- define a few aliases for both key bindings and app defaults
 halfLeft = {
@@ -217,3 +218,37 @@ end)
 hs.hotkey.bind(macro_mash, "=", function()
     hs.itunes.volumeUp()
 end)
+
+hs.hotkey.bind(macro_mash, "v", function()
+    hs.hid.capslock.toggle()
+end)
+
+function copy_password(key)
+    command = string.format("/opt/homebrew/bin/op item get \"%s\" --fields password --reveal | tr -d \"\n\"| pbcopy", key)
+    local result = hs.execute(command)
+    switchback()
+    hs.alert(string.format("sent %s password to clipboard", key))
+end
+
+hs.hotkey.bind(macro_mash, "j", function()
+  copy_password("AWS workspaces sjdev")
+end)
+hs.hotkey.bind(macro_mash, "l", function()
+  copy_password("AWS workspaces sdev2")
+end)
+hs.hotkey.bind(macro_mash, "u", function()
+  copy_password("AWS workspaces sjstage")
+end)
+hs.hotkey.bind(macro_mash, "y", function()
+  copy_password("user-login")
+end)
+
+function switchback()
+  -- check if this is an open, maybe locked workspaces session; we need to switch focus
+  -- away and back to sync clipboards
+  frontWindow = hs.window.frontmostWindow()
+  if frontWindow:title() == "Amazon WorkSpaces" and frontWindow:application():name() == "WorkSpaces" then
+    hs.application.launchOrFocus("Finder")
+    hs.application.launchOrFocus("WorkSpaces")
+  end
+end
