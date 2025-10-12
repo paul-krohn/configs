@@ -213,11 +213,13 @@ spoon.PaulWindowManager:bindKeys{
 
 hs.hotkey.bind(macro_mash, "-", function()
     hs.itunes.volumeDown()
+    hs.alert(string.format("iTunes volume: %s", hs.itunes.getVolume()))
 end)
 
 hs.hotkey.bind(macro_mash, "=", function()
     hs.itunes.volumeUp()
-end)
+    hs.alert(string.format("iTunes volume: %s", hs.itunes.getVolume()))
+  end)
 
 hs.hotkey.bind(macro_mash, "v", function()
     hs.hid.capslock.toggle()
