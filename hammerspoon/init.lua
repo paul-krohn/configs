@@ -254,3 +254,16 @@ function switchback()
     hs.application.launchOrFocus("WorkSpaces")
   end
 end
+
+function toggleCapsLock()
+  hs.alert.show("caps lock " .. (hs.hid.capslock.toggle() and "ON"  or "OFF"))
+end
+
+hs.hotkey.bind(macro_mash, "v", toggleCapsLock)
+
+hs.hotkey.bind(macro_mash, "=", function()
+  hs.itunes.volumeUp()
+end)
+hs.hotkey.bind(macro_mash, "-", function()
+  hs.itunes.volumeDown()
+end)
