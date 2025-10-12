@@ -221,10 +221,6 @@ hs.hotkey.bind(macro_mash, "=", function()
     hs.alert(string.format("iTunes volume: %s", hs.itunes.getVolume()))
   end)
 
-hs.hotkey.bind(macro_mash, "v", function()
-    hs.hid.capslock.toggle()
-end)
-
 function copy_password(key)
     command = string.format("/opt/homebrew/bin/op item get \"%s\" --fields password --reveal | tr -d \"\n\"| pbcopy", key)
     local result = hs.execute(command)
@@ -260,10 +256,3 @@ function toggleCapsLock()
 end
 
 hs.hotkey.bind(macro_mash, "v", toggleCapsLock)
-
-hs.hotkey.bind(macro_mash, "=", function()
-  hs.itunes.volumeUp()
-end)
-hs.hotkey.bind(macro_mash, "-", function()
-  hs.itunes.volumeDown()
-end)
