@@ -201,10 +201,10 @@ spoon.PaulWindowManager:bindKeys{
     {mash = macro_mash, key = "p"},
   },
   next = {
-    {mash = macro_mash,     key = "n"},
+    {mash = macro_mash, key = "n"},
   },
   mic = {
-    {mash = macro_mash,     key = "m"},
+    {mash = macro_mash, key = "m"},
   },
   audiosummary = {
     {mash = macro_mash, key = "u"}
