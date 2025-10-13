@@ -256,3 +256,9 @@ function toggleCapsLock()
 end
 
 hs.hotkey.bind(macro_mash, "v", toggleCapsLock)
+
+hs.keycodes.inputSourceChanged(function()
+  local current = hs.keycodes.currentSourceID()
+  hs.alert.show("input source changed to " .. current)
+  hs.reload()
+end)
