@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-DIR=$(dirname "${BASH_SOURCE}")
+DIR=$(dirname $(readlink "${BASH_SOURCE}"))
 
 for FILE in "${DIR}"/profile.d/*.bash ; do {
 # shellcheck disable=SC1090
