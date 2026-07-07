@@ -1,3 +1,5 @@
+ set -x PATH (/opt/homebrew/bin/brew --prefix)/bin $PATH
+
 # home bin on PATH pls
 set -x PATH $HOME/bin $PATH
 
@@ -22,8 +24,8 @@ end
 complete -c pyact -x -a "(find $PYENV_ROOT/versions -type l -depth 1 -exec basename {} \;)"
 
 # from the pyenv instructions
-status --is-interactive; and . (pyenv init -|psub)
-status --is-interactive; and . (pyenv virtualenv-init -|psub)
+# status --is-interactive && . (pyenv init -|psub)
+# status --is-interactive && . (pyenv virtualenv-init -|psub)
 
 function fish_right_prompt; end  # diable the right (timestamp) prompt
 
