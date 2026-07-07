@@ -1,3 +1,7 @@
+if [[ "${VSCODE_RESOLVING_ENVIRONMENT:-0}" == "1" ]]; then
+  return
+fi
+
 export PATH="$HOME/.basher/bin:$PATH"
 eval "$(basher init - bash)"
 
@@ -7,7 +11,7 @@ case $- in
 esac
 
 # Path to the bash it configuration
-export BASH_IT="/Users/pkrohn/.bash_it"
+export BASH_IT="${HOME}/.bash_it"
 
 # Lock and Load a custom theme file.
 # Leave empty to disable theming.
