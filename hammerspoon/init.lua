@@ -2,7 +2,7 @@
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
   hs.reload()
 end)
-hs.alert.show("Config loaded")
+hs.alert.show(string.format("Config loaded with layout %s", hs.keycodes.currentSourceID()))
 
 local primaryScreen = hs.screen.primaryScreen()
 local primaryScreenMenuBarOffset = primaryScreen:frame().y
@@ -21,14 +21,29 @@ halfLeft = {
   h = 80,
   w = 40,
   x = 10,
-  y = 0
+  y = 5,
 }
 
 halfRight = {
   h = 80,
   w = 40,
   x = 50,
-  y = 0
+  y = 5,
+}
+
+-- iTerm: same top (y = 10) but ~60% of the normal height (48 vs 80)
+iTermHalfLeft = {
+  h = 60,
+  w = 40,
+  x = 10,
+  y = 10,
+}
+
+iTermHalfRight = {
+  h = 60,
+  w = 40,
+  x = 50,
+  y = 10,
 }
 
 upperRight = {
@@ -119,9 +134,9 @@ tallRight = {
 
 wideTop = {
   h = 80,
-  w = 80,
-  x = 10,
-  y = 0,
+  w = 70,
+  x = 15,
+  y = 8,
 }
 
 wideBottom = {
@@ -157,8 +172,8 @@ halfLeftBottom = {
 
 biggen = {
   h = 75,
-  w = 50,
-  x = 22,
+  w = 60,
+  x = 20,
   y = 0
 }
 
@@ -174,10 +189,10 @@ spoon.PaulWindowManager:bindKeys{
     {mash = shift_mash, key = "w", size = wideTop},
     {mash = shift_mash, key = "f", size = halfoTopRight},
 
-    {mash = macro_mash, key = "a", size = halfLeft},
+    {mash = macro_mash, key = "a", size = halfLeft, appOverrides = {iTerm2 = iTermHalfLeft}},
     {mash = shift_mash, key = "a", size = tallLeft},
     {mash = macro_mash, key = "r", size = centeredFullHeight},
-    {mash = macro_mash, key = "s", size = halfRight},
+    {mash = macro_mash, key = "s", size = halfRight, appOverrides = {iTerm2 = iTermHalfRight}},
     {mash = shift_mash, key = "s", size = tallRight},
 
     {mash = macro_mash, key = "z", size = smallLeftBottom},
@@ -212,17 +227,19 @@ spoon.PaulWindowManager:bindKeys{
 }
 
 hs.hotkey.bind(macro_mash, "-", function()
-    hs.itunes.volumeDown()
+    -- hs.itunes.volumeDown()
+    hs.itunes.setVolume(hs.itunes.getVolume() - 2)
     hs.alert(string.format("iTunes volume: %s", hs.itunes.getVolume()))
 end)
 
 hs.hotkey.bind(macro_mash, "=", function()
-    hs.itunes.volumeUp()
+    -- hs.itunes.volumeUp()
+    hs.itunes.setVolume(hs.itunes.getVolume() + 2)
     hs.alert(string.format("iTunes volume: %s", hs.itunes.getVolume()))
   end)
 
 function copy_password(key)
-    command = string.format("/opt/homebrew/bin/op item get \"%s\" --fields password --reveal | tr -d \"\n\"| pbcopy", key)
+    command = string.format("/usr/local/bin/op item get \"%s\" --fields password --reveal | tr -d \"\n\"| pbcopy", key)
     local result = hs.execute(command)
     switchback()
     hs.alert(string.format("sent %s password to clipboard", key))
@@ -262,3 +279,5 @@ hs.keycodes.inputSourceChanged(function()
   hs.alert.show("input source changed to " .. current)
   hs.reload()
 end)
+
+keyboardWatcher:start()
